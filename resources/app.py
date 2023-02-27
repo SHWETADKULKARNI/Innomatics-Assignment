@@ -1,33 +1,16 @@
 import streamlit as st
-from matplotlib import image
-import pandas as pd
-import plotly.express as px
-import os
+import webbrowser
 
-# absolute path to this file
-FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-# absolute path to this file's root directory
-PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
-# absolute path of directory_of_interest
-dir_of_interest = os.path.join(PARENT_DIR, "resources")
+st.title("First Assignment Innomatics Research Labs")
+st.header("Create Streamlit Data App")
+st.subheader("shweta kulkarni")
 
-IMAGE_PATH = os.path.join(dir_of_interest, "images", "amazon.jpeg")
-DATA_PATH = os.path.join(dir_of_interest, "data", "amazon.csv")
+linkedin = 'https://www.linkedin.com/in/shweta-kulkarni-ba8b53a9/'
 
-st.title("Dashboard - Amazon Data")
+if st.button('Linkedin'):
+    webbrowser.open_new_tab(linkedin)
 
-img = image.imread(IMAGE_PATH)
-st.image(img)
+github = 'https://github.com/SHWETADKULKARNI'
 
-df = pd.read_csv(DATA_PATH)
-st.dataframe(df)
-
-species = st.selectbox("Select the Species:", df['rating'].unique())
-
-col1, col2 = st.columns(2)
-
-fig_1 = px.histogram(df[df['rating'] == species], x="rating_count")
-col1.plotly_chart(fig_1, use_container_width=True)
-
-fig_2 = px.box(df[df['category'] == species], y="rating")
-col2.plotly_chart(fig_2, use_container_width=True)
+if st.button('GitHub'):
+    webbrowser.open_new_tab(github)
