@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Results</title>
+</head>
+
+<body >
+    <h2>Matches:</h2>
+    {% if matches %}
+    <ul>
+        
+        {% for match in matches %}
+        <li>{{ match }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No matches found.</p>
+    {% endif %}
+</body>
+
+</html>
